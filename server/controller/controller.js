@@ -20,7 +20,7 @@ exports.create = (req, res) => {
   user
     .save(user)
     .then((data) => {
-      res.render("login")
+      res.render("login");
     })
     .catch((err) => {
       res.status(500).send({
