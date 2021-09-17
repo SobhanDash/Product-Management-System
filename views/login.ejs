@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('include/__header') %>
+    <title>Login</title>
+  </head>
+
+  <body>
+    <section class="vh-100 gradient-custom">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-dark text-white" style="border-radius: 1rem">
+              <div class="card-body p-5 text-center">
+                <div class="mb-md-5 mt-md-4 pb-5">
+                  <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                  <p class="text-white-50 mb-5">
+                    Please enter your login and password!
+                  </p>
+
+                  <form class="login" action="/login" method="POST">
+                    <div class="form-outline mb-4">
+                      <label class="form-label visually-hidden" for="typeEmailX"
+                        >Email</label
+                      >
+                      <input
+                        type="email"
+                        id="typeEmailX"
+                        class="form-control form-control-lg lgip py-4"
+                        placeholder="Email"
+                        name="email"
+                      />
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <label
+                        class="form-label visually-hidden"
+                        for="typePasswordX"
+                        >Password</label
+                      >
+                      <input
+                        type="password"
+                        id="typePasswordX"
+                        class="form-control form-control-lg lgip py-4"
+                        placeholder="Password"
+                        name="password"
+                      />
+                    </div>
+
+                    <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> -->
+
+                    <button
+                      class="btn btn-outline-light btn-lg px-5"
+                      type="submit"
+                    >
+                      Login
+                    </button>
+
+                    <div>
+                      <p class="text-center text-muted mt-5 mb-0">
+                        Don't have an account?
+                        <a href="/register" class="text-white-50 fw-bold"
+                          >Sign Up</a
+                        >
+                      </p>
+                    </div>
+                  </form>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/js/bootstrap.bundle.min.js"
+      integrity="sha512-trzlduO3EdG7Q0xK4+A+rPbcolVt37ftugUSOvrHhLR5Yw5rsfWXcpB3CPuEBcRBCHpc+j18xtQ6YrtVPKCdsg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>
