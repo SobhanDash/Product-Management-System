@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include('include/__header') %>
+    <%- include('include/_header') %>
     <title>Dashboard</title>
   </head>
-  <body>
-    <h1>Dashboard Page</h1>
+  <body class="dashboard">
+    <%- include('include/_navbar') %>
+    <main id="site-main">
+      <div class="container">
+        <!-- form handling -->
+        <form action="/" method="POST">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Date</th>
+                <th>Sale</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Report</th>
+              </tr>
+            </thead>
+          </table>
+        </form>
+      </div>
+    </main>
   </body>
 </html>

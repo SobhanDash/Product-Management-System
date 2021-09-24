@@ -1,8 +1,10 @@
 const express = require("express");
 const route = express.Router();
 const services = require("../services/render");
-const controller = require("../controller/controller");
-const Userdb = require("../model/model");
+const Userdb = require("../model/user");
+const user = require("../controller/user");
+const productController = require("../controller/productController");
+const { Router } = require("express");
 
 /**
  * @description
@@ -13,18 +15,20 @@ route.get("/", services.homeRoute);
 
 /**
  * @description
- * Login Route
+ * Login Routes
  * @method GET/
+ * @method POST/
  */
-// route.get("/login", services.loginRoute);
+
+route.get("/login", services.loginRoute);
 route.post("/login", async (req, res) => {
   try {
-    const email = req.body.email;
+    const username = req.body.username;
     const password = req.body.password;
 
-    const userName = await Userdb.findOne({ email: email });
+    const pass = await Userdb.findOne({ password: password });
 
-    if (userName.confirmPassword === password) {
+    if (pass.confirmPassword === password) {
       res.status(202).render("dashboard");
     } else {
       res.render("login");
@@ -36,11 +40,13 @@ route.post("/login", async (req, res) => {
 
 /**
  * @description
- * Register Route
+ * Register Routes
  * @method GET/
+ * @method POST/
  */
 route.get("/register", services.registerRoute);
-route.post("/register", controller.create);
+route.post("/register", user.create);
+
 /**
  * @description
  * Dashboard Route
@@ -48,12 +54,30 @@ route.post("/register", controller.create);
  */
 route.get("/dashboard", services.dashboardRoute);
 
+/**
+ * @description
+ * User Routes
+ * @method GET/
+ */
+route.get("/users", user.find);
+
+/**
+ * @description
+ * Register Routes
+ * @method GET/
+ * @method POST/
+ */
+route.get("/addproduct", services.addProductsRoute);
+route.post("/addproduct", productController.addProduct);
+
 //API
-// route.post("/users", controller.create);
-route.get("/users", controller.find);
+// route.get("/api/products", productController.findProduct);
+// route.post("/api/products", productController.addProduct);
+// route.put("/api/products:id", productController.updateProduct);
+// route.delete("/api/products:id", productController.deleteProduct);
 
 module.exports = route;
 
 // api function is the function given after the endpoint.
 // flow of a route=> API functionality(GET, POST, PUT, DELETE) -> What to do(handler function) -> Where to do(path/endpoint)
-// api is the entire statement. Ex- route.get("/users", controller.find);
+// api is the entire statement. Ex- route.get("/users", user.find);

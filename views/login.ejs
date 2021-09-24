@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include('include/__header') %>
+    <%- include('include/_header') %>
     <title>Login</title>
   </head>
 
@@ -20,15 +20,17 @@
 
                   <form class="login" action="/login" method="POST">
                     <div class="form-outline mb-4">
-                      <label class="form-label visually-hidden" for="typeEmailX"
-                        >Email</label
+                      <label
+                        class="form-label visually-hidden"
+                        for="typeUSernameX"
+                        >Username</label
                       >
                       <input
-                        type="email"
-                        id="typeEmailX"
+                        type="username"
+                        id="typeusernameX"
                         class="form-control form-control-lg lgip py-4"
-                        placeholder="Email"
-                        name="email"
+                        placeholder="Username"
+                        name="username"
                       />
                     </div>
 
@@ -47,12 +49,7 @@
                       />
                     </div>
 
-                    <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> -->
-
-                    <button
-                      class="btn btn-outline-light btn-lg px-5"
-                      type="submit"
-                    >
+                    <button class="btn btn-outline-light btn-lg px-5" type="submit">
                       Login
                     </button>
 
@@ -65,7 +62,6 @@
                       </p>
                     </div>
                   </form>
-                  
                 </div>
               </div>
             </div>
