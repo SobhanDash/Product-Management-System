@@ -9,7 +9,7 @@
     <main id="site-main">
       <div class="container">
         <!-- form handling -->
-        <form action="/" method="POST">
+        <form action="/dashboard" method="POST">
           <table class="table">
             <thead class="thead-dark">
               <tr>
@@ -19,14 +19,16 @@
                 <th>Quantity</th>
                 <th>Date</th>
                 <th>Sale</th>
-                <th>Edit</th>
-                <th>Delete</th>
-                <th>Report</th>
+                <th>Actions</th>
               </tr>
             </thead>
+            <tbody>
+              <%- include('include/_show') %>
+            </tbody>
           </table>
         </form>
       </div>
     </main>
+    <%- include('include/_footer') %>
   </body>
 </html>

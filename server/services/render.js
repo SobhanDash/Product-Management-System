@@ -1,4 +1,4 @@
-const axios = require("axios");
+const Productdb = require("../model/product");
 
 exports.homeRoute = (req, res) => {
   res.render("index");
@@ -14,18 +14,26 @@ exports.registerRoute = (req, res) => {
 
 exports.dashboardRoute = (req, res) => {
   // make a get request to api/product
-  // axios
-  //   .get("https://localhost:3000/api/products")
-  //   .then(function (res) {
-  //     console.log(res);
-  //     res.render("dashboard", { products: res.data });
-  //   })
-  //   .catch((err) => {
-  //     res.send(err);
-  //   });
-  res.render("dashboard");
+  Productdb.find()
+    .then((product) => {
+      res.render("dashboard", { products: product });
+    })
+    .catch((err) => {
+      res.status(500).send("Error occured");
+    });
 };
 
 exports.addProductsRoute = (req, res) => {
   res.render("addproducts");
+};
+
+exports.updateProductRoute = (req, res) => {
+  Productdb.find({ _id: req.query.id })
+    .then((product) => {
+      console.log(product[0]);
+      res.render("update_product", { products: product[0] });
+    })
+    .catch((err) => {
+      res.status(500).send("Error occured", err);
+    });
 };

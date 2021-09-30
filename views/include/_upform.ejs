@@ -1,11 +1,14 @@
-<form id="add_user" method="POST" action="/api/products">
+<form id="update_user" method="PUT" action="/api/products/:id">
+  <!-- <form id="update_user" method="PUT" > -->
   <div class="form-outline mb-4">
+    <input type="hidden" name="id" value="<%= products._id %>" />
     <input
       placeholder="Product Name"
       type="text"
       id="form3Example1cg"
       class="form-control form-control-lg lgip"
       name="pname"
+      value="<%= products.pname %>"
     />
     <label class="form-label visually-hidden" for="form3Example1cg"
       >Product Name</label
@@ -19,6 +22,7 @@
       id="form3Example3cg"
       class="form-control form-control-lg lgip"
       name="price"
+      value="<%= products.price %>"
     />
     <label class="form-label visually-hidden" for="form3Example3cg"
       >Price</label
@@ -32,6 +36,7 @@
       id="form3Example4cg"
       class="form-control form-control-lg lgip"
       name="quantity"
+      value="<%= products.quantity %>"
     />
     <label class="form-label visually-hidden" for="form3Example4cg"
       >Quantity</label
@@ -45,6 +50,7 @@
       id="form3Example4cdg"
       class="form-control form-control-lg lgip"
       name="date"
+      value="<%= products.date %>"
     />
     <label class="form-label visually-hidden" for="form3Example4cdg"
       >Date</label
@@ -58,6 +64,7 @@
       id="form3Example4cdg"
       class="form-control form-control-lg lgip"
       name="sale"
+      value="<%= products.sale %>"
     />
     <label class="form-label visually-hidden" for="form3Example4cdg"
       >Sale</label
@@ -66,7 +73,13 @@
 
   <div class="d-flex justify-content-center">
     <button type="submit" class="btn-lg btn btn-outline-light px-5">
-      Add Product
+      Update Product
     </button>
+  </div>
+  <div>
+    <p class="text-center text-muted mt-5 mb-0 lead">
+      Go Back
+      <a href="/dashboard" class="text-white-50 fw-bold">Dashboard</a>
+    </p>
   </div>
 </form>

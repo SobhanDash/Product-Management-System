@@ -19,7 +19,8 @@ exports.addProduct = (req, res) => {
   product
     .save(product)
     .then((data) => {
-      res.render("dashboard");
+      // res.send(data)
+      res.redirect("/dashboard");
     })
     .catch((err) => {
       res.status(500).send({
@@ -59,4 +60,49 @@ exports.findProduct = (req, res) => {
         });
       });
   }
+};
+
+// Update a new idetified user by user id
+exports.updateProduct = (req, res) => {
+  if (!req.body) {
+    return res.status(400).send({ message: "Data to update can not be empty" });
+  }
+
+  const id = req.params.id;
+  Productdb.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot Update product with ${id}. Maybe product not found!`,
+        });
+      } else {
+        res.send(data);
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ message: "Error Update product information" });
+    });
+};
+
+// Delete a user with specified user id in the request
+exports.deleteProduct = (req, res) => {
+  const id = req.params.id;
+
+  Productdb.findByIdAndDelete(id)
+    .then((data) => {
+      if (!data) {
+        res
+          .status(404)
+          .send({ message: `Cannot Delete with id ${id}. Maybe id is wrong` });
+      } else {
+        res.send({
+          message: "Product was deleted successfully!",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Could not delete Product with id=" + id,
+      });
+    });
 };

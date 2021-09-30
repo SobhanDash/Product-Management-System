@@ -4,7 +4,6 @@ const services = require("../services/render");
 const Userdb = require("../model/user");
 const user = require("../controller/user");
 const productController = require("../controller/productController");
-const { Router } = require("express");
 
 /**
  * @description
@@ -28,8 +27,8 @@ route.post("/login", async (req, res) => {
 
     const pass = await Userdb.findOne({ password: password });
 
-    if (pass.confirmPassword === password) {
-      res.status(202).render("dashboard");
+    if (password === pass.confirmPassword) {
+      res.status(202).redirect("/dashboard");
     } else {
       res.render("login");
     }
@@ -65,16 +64,21 @@ route.get("/users", user.find);
  * @description
  * Register Routes
  * @method GET/
- * @method POST/
  */
 route.get("/addproduct", services.addProductsRoute);
-route.post("/addproduct", productController.addProduct);
+// route.post("/addproduct", productController.addProduct);
+
+/**
+ *  @description for update user
+ *  @method GET /update-user
+ */
+route.get("/api/update_product", services.updateProductRoute);
 
 //API
-// route.get("/api/products", productController.findProduct);
-// route.post("/api/products", productController.addProduct);
-// route.put("/api/products:id", productController.updateProduct);
-// route.delete("/api/products:id", productController.deleteProduct);
+route.get("/api/products", productController.findProduct);
+route.post("/api/products", productController.addProduct);
+route.put("/api/products/:id", productController.updateProduct);
+route.delete("/api/products/:id", productController.deleteProduct);
 
 module.exports = route;
 
