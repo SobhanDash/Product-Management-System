@@ -2,7 +2,6 @@ Admin Module:
 Admin login/logout
 Add product details 
 Add item
-Add employee details
 View Product Details
 
 Forms:
@@ -20,10 +19,10 @@ Retype password
 submit} -----> DONE
 
 Add Product:-
-product id
+{product id
 product name
 price
 quantity
 date
 sale
-submit
+submit} ------> DONE
